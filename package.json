@@ -1,7 +1,7 @@
 {
-  "name": "webpack-notify-plugin",
+  "name": "webpack-bot-notify-plugin",
   "version": "1.0.0",
-  "description": "webpack notify plugin",
+  "description": "webpack bot notify plugin",
   "main": "dist/index.cjs.js",
   "module": "dist/index.mjs",
   "types": "dist/index.d.ts",
@@ -13,8 +13,10 @@
   "keywords": [
     "webpack",
     "webpack plugin",
+    "bot",
     "notify",
-    "notify plugin"
+    "notify plugin",
+    "weCom"
   ],
   "author": "mk先生",
   "license": "MIT",
