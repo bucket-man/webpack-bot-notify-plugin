@@ -1,6 +1,6 @@
 import { Stats, Compiler } from 'webpack';
 
-interface WabpackNotifyPluginOptions {
+interface WabpackBotNotifyPluginOptions {
     channel: string;
     key: string;
     content: Content;
@@ -36,13 +36,13 @@ interface NewsItem {
 interface CompilerExt extends Compiler {
     plugin: (name: string, fn: (state: Stats, cb: any) => void) => void;
 }
-declare class WabpackNotifyPlugin {
-    config: WabpackNotifyPluginOptions;
+declare class WabpackBotNotifyPlugin {
+    config: WabpackBotNotifyPluginOptions;
     url: string;
-    constructor(config: WabpackNotifyPluginOptions);
+    constructor(config: WabpackBotNotifyPluginOptions);
     apply(compiler: CompilerExt): void;
     pluginDoneFn(state: Stats, cb: any): void;
     sendWecomNotify(data: any): Promise<unknown>;
 }
 
-export { Content, Image, Markdown, News, NewsItem, Text, WabpackNotifyPlugin, WabpackNotifyPluginOptions };
+export { Content, Image, Markdown, News, NewsItem, Text, WabpackBotNotifyPlugin, WabpackBotNotifyPluginOptions };

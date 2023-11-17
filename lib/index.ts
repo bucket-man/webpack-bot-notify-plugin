@@ -3,7 +3,7 @@ import axios from 'axios'
 
 const wecom_notify_url = 'https://qyapi.weixin.qq.com/cgi-bin/webhook/send'
 
-export interface WabpackNotifyPluginOptions {
+export interface WabpackBotNotifyPluginOptions {
   channel: string,
   key: string,
   content: Content
@@ -47,11 +47,11 @@ interface CompilerExt extends Compiler {
   plugin: (name: string, fn: (state: Stats, cb: any) => void) => void
 }
 
-export class WabpackNotifyPlugin {
-  config: WabpackNotifyPluginOptions
+export class WabpackBotNotifyPlugin {
+  config: WabpackBotNotifyPluginOptions
   url: string
 
-  constructor(config: WabpackNotifyPluginOptions) {
+  constructor(config: WabpackBotNotifyPluginOptions) {
     const { channel, key } = config
     if (channel == 'wecom') {
       this.url = `${wecom_notify_url}?key=${key}`
@@ -62,7 +62,7 @@ export class WabpackNotifyPlugin {
   apply(compiler: CompilerExt) {
     if (compiler.hooks && compiler.hooks.done) {
 
-      compiler.hooks.done.tapAsync('WabpackNotifyPlugin', (state: Stats, cb) => {
+      compiler.hooks.done.tapAsync('WabpackBotNotifyPlugin', (state: Stats, cb) => {
         this.pluginDoneFn(state, cb)
       })
     } else {

@@ -9,18 +9,18 @@ function _interopDefaultLegacy (e) { return e && typeof e === 'object' && 'defau
 var axios__default = /*#__PURE__*/_interopDefaultLegacy(axios);
 
 var wecom_notify_url = 'https://qyapi.weixin.qq.com/cgi-bin/webhook/send';
-var WabpackNotifyPlugin = /** @class */ (function () {
-    function WabpackNotifyPlugin(config) {
+var WabpackBotNotifyPlugin = /** @class */ (function () {
+    function WabpackBotNotifyPlugin(config) {
         var channel = config.channel, key = config.key;
         if (channel == 'wecom') {
             this.url = "".concat(wecom_notify_url, "?key=").concat(key);
         }
         this.config = config;
     }
-    WabpackNotifyPlugin.prototype.apply = function (compiler) {
+    WabpackBotNotifyPlugin.prototype.apply = function (compiler) {
         var _this = this;
         if (compiler.hooks && compiler.hooks.done) {
-            compiler.hooks.done.tapAsync('WabpackNotifyPlugin', function (state, cb) {
+            compiler.hooks.done.tapAsync('WabpackBotNotifyPlugin', function (state, cb) {
                 _this.pluginDoneFn(state, cb);
             });
         }
@@ -32,7 +32,7 @@ var WabpackNotifyPlugin = /** @class */ (function () {
             });
         }
     };
-    WabpackNotifyPlugin.prototype.pluginDoneFn = function (state, cb) {
+    WabpackBotNotifyPlugin.prototype.pluginDoneFn = function (state, cb) {
         var _a = this.config, channel = _a.channel, content = _a.content;
         if (!channel) {
             console.warn('未填写通知渠道。');
@@ -58,7 +58,7 @@ var WabpackNotifyPlugin = /** @class */ (function () {
             console.warn('不支持当前渠道，请根据文档设置。');
         }
     };
-    WabpackNotifyPlugin.prototype.sendWecomNotify = function (data) {
+    WabpackBotNotifyPlugin.prototype.sendWecomNotify = function (data) {
         var _this = this;
         return new Promise(function (resolve, reject) {
             axios__default["default"].post(_this.url, data).then(function (response) {
@@ -82,7 +82,7 @@ var WabpackNotifyPlugin = /** @class */ (function () {
             });
         });
     };
-    return WabpackNotifyPlugin;
+    return WabpackBotNotifyPlugin;
 }());
 
-exports.WabpackNotifyPlugin = WabpackNotifyPlugin;
+exports.WabpackBotNotifyPlugin = WabpackBotNotifyPlugin;

@@ -1,5 +1,5 @@
 import { Compiler, Stats } from 'webpack';
-export interface WabpackNotifyPluginOptions {
+export interface WabpackBotNotifyPluginOptions {
     channel: string;
     key: string;
     content: Content;
@@ -35,10 +35,10 @@ export interface NewsItem {
 interface CompilerExt extends Compiler {
     plugin: (name: string, fn: (state: Stats, cb: any) => void) => void;
 }
-export declare class WabpackNotifyPlugin {
-    config: WabpackNotifyPluginOptions;
+export declare class WabpackBotNotifyPlugin {
+    config: WabpackBotNotifyPluginOptions;
     url: string;
-    constructor(config: WabpackNotifyPluginOptions);
+    constructor(config: WabpackBotNotifyPluginOptions);
     apply(compiler: CompilerExt): void;
     pluginDoneFn(state: Stats, cb: any): void;
     sendWecomNotify(data: any): Promise<unknown>;
