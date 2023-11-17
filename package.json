@@ -1,0 +1,37 @@
+{
+  "name": "webpack-notify-plugin",
+  "version": "1.0.0",
+  "description": "webpack notify plugin",
+  "main": "dist/index.cjs.js",
+  "module": "dist/index.mjs",
+  "types": "dist/index.d.ts",
+  "scripts": {
+    "dev": "rimraf dist && rollup -c -w",
+    "build": "rimraf dist && rollup -c",
+    "changelog": "standard-version"
+  },
+  "keywords": [
+    "webpack",
+    "webpack plugin",
+    "notify",
+    "notify plugin"
+  ],
+  "author": "mk先生",
+  "license": "MIT",
+  "dependencies": {
+    "@types/webpack": "5.28.0",
+    "axios": "^1.6.2"
+  },
+  "devDependencies": {
+    "@rollup/plugin-commonjs": "^23.0.2",
+    "@rollup/plugin-json": "^5.0.1",
+    "rimraf": "^3.0.2",
+    "rollup": "^2.79.1",
+    "rollup-plugin-dts": "^4.2.2",
+    "rollup-plugin-terser": "^7.0.2",
+    "rollup-plugin-typescript2": "^0.34.0",
+    "standard-version": "^9.5.0",
+    "typedoc": "^0.23.15",
+    "typescript": "^4.8.4"
+  }
+}
